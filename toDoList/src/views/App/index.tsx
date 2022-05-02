@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./index.module.scss";
 import { useToDoStore } from "../../data/stores/useToDoStore";
 
@@ -19,7 +19,9 @@ export const App: React.FC = () => {
         state.removeTask,
     ]);
 
-    createTask("sample text");
+    useEffect(() => {
+        createTask('asdfasd'); 
+    }, []);
 
     return (
         <article className = {styles.article}>
