@@ -31,6 +31,7 @@ export const InputPlus: React.FC<InputPlusProps> = ({
                         addTask();
                     }
                 }}
+                placeholder = "Type here..."
             />
 
             <button     
