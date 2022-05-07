@@ -3,6 +3,8 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 55px;
+    margin-bottom: 15px;
+
     &Value {
         border: 1px solid #B1B1B1;
         border-top-left-radius: 5px;
