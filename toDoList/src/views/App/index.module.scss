@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
 .article {
     background: white;
     min-width: 600px;
@@ -8,6 +10,14 @@
         font-size: 40px;
         margin-bottom: .3rem;
         text-align: center;
+        transition: all 450ms cubic-bezier(.25, .46, .45, .94) 0s;
+        cursor: pointer;
+        font-family: 'Titan One', cursive;
+
+        &:hover {
+            color: rgb(63, 114, 175);
+        }
+
     }
 
     &Text {

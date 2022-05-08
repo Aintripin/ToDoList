@@ -21,7 +21,7 @@ export const InputTask: React.FC<InputTaskProps> = ({
 
     return (
         <div className = {styles.inputTask}>
-            <label>
+            <label className = {styles.inputTaskLabel}>
                 <input 
                     type = 'checkbox'
                     checked = {checked}

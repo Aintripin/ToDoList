@@ -12,6 +12,15 @@
         padding: 9px 10px;
         font: 1rem/1.4 'Roboto', sans-serif;
         background: #DBE2EF;
+        transition: all 250ms cubic-bezier(.25, .46, .45, .94) 0s;  
+
+        &:focus {
+            transform: scale(1.035);
+            border-radius: 5px;
+            // border: 1px solid #B1B1B1;
+            // outline: none;
+            outline: 1px solid rgb(63, 114, 175);
+        }
 
 
         &::placeholder {
@@ -31,6 +40,10 @@
         &:hover {
             background: rgb(27, 140, 192) url("./images/plus_resized_05.png") no-repeat center center;
             border: 1px solid #B1B1B1;
+        }
+
+        &:focus {
+            outline: 1px solid rgb(63, 114, 175);
         }
     }
 }
