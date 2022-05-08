@@ -40,7 +40,10 @@ export const InputTask: React.FC<InputTaskProps> = ({
                         setChecked(e.target.checked);
 
                         if (e.target.checked) {
-                            onDone(id);
+                            setTimeout(() => {
+                                onDone(id);
+                            }, 550)
+                            // onDone(id);
                         }
                     }}
                 />

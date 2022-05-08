@@ -28,6 +28,17 @@
     &Checkbox {
         width: 20px;
         height: 20px;
+        cursor: pointer;
+        transition: all 450ms cubic-bezier(.25, .46, .45, .94) 0s;
+        transform: rotate(-90deg);
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            transform: scale(1.07) rotate(0deg);
+        }
     }
 
     &Title {
