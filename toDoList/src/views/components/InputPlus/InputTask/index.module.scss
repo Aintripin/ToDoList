@@ -40,7 +40,20 @@
         }
     }
 
-    &Edit, &Remove {
+    &EditTitle {
+        font: 1rem/1em 'Roboto', sans-serif;
+        border: none;
+        padding: 5px;
+        background: none;
+        box-shadow: 0 4px 0 -3px #3F72AF;
+        transition: all 450ms cubic-bezier(.25, .46, .45, .94) 0s;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &Edit, &Remove, &Save {
         display: block;
         border: none;
         background: none no-repeat center center;
@@ -71,6 +84,14 @@
 
         &:hover {
             transform: rotate(-180deg) scale(1.16);
+        }
+    }
+
+    &Save {
+        background-image: url("./images/check.svg");
+
+        &:hover {
+            transform: rotate(-7deg) scale(1.26);
         }
     }
 }

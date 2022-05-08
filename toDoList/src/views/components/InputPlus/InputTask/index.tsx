@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./index.module.scss";
 
 interface InputTaskProps {
@@ -18,12 +18,22 @@ export const InputTask: React.FC<InputTaskProps> = ({
 }) => { 
 
     const [checked, setChecked] = useState(false); 
+    const [isEditMode, setIsEditMode] = useState(false); 
+    const [value, setValue] = useState(title);
+    const editTitleInputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (isEditMode) {
+            editTitleInputRef?.current?.focus();
+        }
+    }, [isEditMode]);
 
     return (
         <div className = {styles.inputTask}>
             <label className = {styles.inputTaskLabel}>
                 <input 
                     type = 'checkbox'
+                    disabled = {isEditMode}
                     checked = {checked}
                     className = {styles.inputTaskCheckbox}
                     onChange = {(e) => {
@@ -34,15 +44,48 @@ export const InputTask: React.FC<InputTaskProps> = ({
                         }
                     }}
                 />
-                <h3 className = {styles.inputTaskTitle}> {title}</h3>
+                {isEditMode ? (
+                                <input 
+                                    value = {value}
+                                    ref = {editTitleInputRef}
+                                    onChange = {(e) => {
+                                        setValue(e.target.value);
+                                    }}
+                                    onKeyDown = {(e) => {
+                                        if(e.key === 'Enter') {
+                                            onEdited(id, value);
+                                            setIsEditMode(false);
+                                        }
+                                    }}
+                                    className = {styles.inputTaskEditTitle}
+                                />
+                            ) : (
+                                    <h3 className = {styles.inputTaskTitle}> {title}</h3>
+                                )
+                }
             </label>
+
+
+            { isEditMode ? (
             <button 
-                aria-label = "Edit"
-                className = {styles.inputTaskEdit}
+                aria-label = "Save"
+                className = {styles.inputTaskSave}
                 onClick = {() => {
-                
+                    onEdited(id, value);
+                    setIsEditMode(false);
                 }}
             />
+            ) : (
+                <button 
+                    aria-label = "Edit"
+                    className = {styles.inputTaskEdit}
+                    onClick = {() => {
+                        setIsEditMode(true);
+                    }}
+                />
+            )}
+
+
             <button 
                 aria-label = "Remove"
                 className = {styles.inputTaskRemove}
